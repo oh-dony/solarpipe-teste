@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-
 import { ReactNode } from "react";
+
 // Styles
 import "@/assets/css/style.css";
+
+// Components
+import { Footer } from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Solar",
@@ -13,7 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

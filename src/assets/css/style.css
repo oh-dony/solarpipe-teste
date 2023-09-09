@@ -9,8 +9,10 @@
 /* @import url(about.css); */
 /* @import url(team.css); */
 /* @import url(contact.css); */
-/* @import url(footer.css); */
+@import url(footer.css);
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--body);
+  color: var(--default);
 }

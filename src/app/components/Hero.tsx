@@ -14,6 +14,13 @@ export function Hero() {
           Deixe as automações cuidarem do trabalho enquanto você relaxa com uma
           xícara de café quente!
         </p>
+
+        <a
+          href="http://"
+          className="btn btn-full gradient gradient-yellow gradient-hover radius transition"
+        >
+          Acessar
+        </a>
       </div>
     </div>
   );
