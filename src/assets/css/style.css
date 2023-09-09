@@ -1,0 +1,16 @@
+/* ==== RESETS ==== */
+@import url(boot.css);
+
+/* ==== COMPONENTS ==== */
+@import url(header.css);
+@import url(hero.css);
+/* @import url(swiper-slide.css); */
+/* @import url(articles.css); */
+/* @import url(about.css); */
+/* @import url(team.css); */
+/* @import url(contact.css); */
+/* @import url(footer.css); */
+
+body {
+  font-family: "Poppins", sans-serif;
+}

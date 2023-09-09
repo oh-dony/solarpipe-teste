@@ -1,0 +1,25 @@
+header {
+  padding: 10px 0;
+  box-shadow: var(--shadow);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+}
+
+.logo span {
+  font-size: var(--font-max);
+}

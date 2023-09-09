@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap");
+
+/* ==== RESET ==== */
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+main {
+  overflow: hidden;
+}
+
+/* ==== VARIABLES ==== */
+:root {
+  /* ==== CONTAINERS ====  */
+  --body: #fff;
+  --header: #fff;
+  --contents: #fff;
+  --galassmorphism: rgba(255, 255, 255, 0.5);
+  --footer: rgb(226, 226, 226);
+  --min-height: 100vh;
+
+  /* ==== SHADOWS & BORDERS ====  */
+  --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --soft-border: 1px solid rgba(0, 0, 0, 0.1);
+  --border: 1px solid rgba(0, 0, 0, 0.2);
+  --radius-normal: 5px;
+  --radius-medium: 10px;
+  --radius-large: 20px;
+  --radius-round: 50%;
+
+  /* ==== FONT SIZE ====  */
+  --font-min: 0.8em;
+  --font-small: 0.875em;
+  --font-normal: 1em;
+  --font-medium: 1.2em;
+  --font-large: 1.4em;
+  --font-max: 2em;
+
+  /* ==== COLORS ====  */
+  --primary: #7c6fee;
+  --secondary: ;
+  --default: #555555;
+  --text: #555555;
+  --color-green: #36ba9b;
+  --color-blue: #39aed9;
+  --color-yellow: #f5b946;
+  --color-red: #d94352;
+
+  /* ==== HOVER ====  */
+  --hover-color-green: #61ddbc;
+  --hover-color-blue: #66d4f1;
+  --hover-color-yellow: #fcd277;
+  --hover-color-red: #f76c82;
+  --hover-duration: 0.3s;
+
+  /* ==== GRADIENTS ====  */
+  --gradient-green: linear-gradient(
+    to right,
+    #42e695 0%,
+    #3bb2b8 50%,
+    #42e695 100%
+  );
+  --gradient-blue: linear-gradient(
+    to right,
+    #17ead9 0%,
+    #6078ea 50%,
+    #17ead9 100%
+  );
+  --gradient-red: linear-gradient(
+    to right,
+    #622744 0%,
+    #c53364 50%,
+    #622744 100%
+  );
+  --gradient-yellow: linear-gradient(
+    to right,
+    #fce38a 0%,
+    #f38181 50%,
+    #fce38a 100%
+  );
+
+  /* ==== Z-INDEX ====  */
+  --index-back: -1;
+  --index-fold: 2;
+  --index-menu: 3;
+  --index-modal: 4;
+}
+
+:root {
+  --swiper-theme-color: #7c6fee !important;
+}
+
+.pretty .state label:after,
+.pretty .state label:before {
+  top: calc((0% - (100% - 0.9em)) - 1%);
+}
+
+.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #7c6fee;
+  background-color: #7c6fee !important;
+}
+
+/* ==== SECTION ==== */
+section {
+  min-height: var(--min-height);
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: var(--font-max);
+  color: var(--default);
+}
+
+.section-header p {
+  max-width: 50rem;
+}
+
+/* ==== CONTAINER ==== */
+.content,
+.container {
+  display: block;
+  width: 1200px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 60px 0;
+}
