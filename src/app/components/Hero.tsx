@@ -7,16 +7,20 @@ import Link from "next/link";
 import appLogo from "@/assets/images/icons/sol.png";
 
 export function Hero() {
-  const aboutSection = document.getElementById("sobre");
+  // if (typeof window !== "undefined") {
+  //   const aboutSection = document.getElementById("sobre");
 
-  function scroll() {
-    if (aboutSection) {
-      window.scrollTo({
-        top: aboutSection.offsetTop,
-        behavior: "smooth",
-      });
-    }
-  }
+  //   function scroll() {
+  //     if (aboutSection) {
+  //       window.scrollTo({
+  //         top: aboutSection.offsetTop,
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   }
+
+  //   scroll();
+  // }
 
   return (
     <div className="hero">
@@ -30,7 +34,7 @@ export function Hero() {
         </p>
 
         <button
-          onClick={scroll}
+          // onClick={scroll}
           className="btn btn-full gradient gradient-yellow gradient-hover radius transition"
         >
           Conheça a SolarTech
