@@ -25,7 +25,7 @@ main {
   --min-height: 100vh;
 
   /* ==== SHADOWS & BORDERS ====  */
-  --shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+  --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   --soft-border: 1px solid rgba(0, 0, 0, 0.1);
   --border: 1px solid rgba(0, 0, 0, 0.2);
   --radius-normal: 5px;
@@ -101,6 +101,7 @@ main {
   --default: #fff;
 
   /* ==== SHADOWS & BORDERS ====  */
+  --shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
   --soft-border: 1px solid rgba(255, 255, 255, 0.1);
 }
 

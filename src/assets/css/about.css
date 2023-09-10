@@ -13,7 +13,6 @@
 
 .about-content article {
   width: 300px;
-  /* height: 300px; */
   padding: 20px;
   background: var(--header);
   box-shadow: var(--shadow);

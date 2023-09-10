@@ -98,7 +98,7 @@ export default function DarkModeSwitch() {
             onClick={toggleDarkMode}
           />
         }
-        label="Dark Mode"
+        label="DarkMode"
       />
     </FormGroup>
   );
