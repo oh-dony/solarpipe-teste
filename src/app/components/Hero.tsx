@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,20 +8,22 @@ import Link from "next/link";
 import appLogo from "@/assets/images/icons/sol.png";
 
 export function Hero() {
-  // if (typeof window !== "undefined") {
-  //   const aboutSection = document.getElementById("sobre");
+  const [aboutSection, setAboutSection] = useState<HTMLElement | null>(null);
 
-  //   function scroll() {
-  //     if (aboutSection) {
-  //       window.scrollTo({
-  //         top: aboutSection.offsetTop,
-  //         behavior: "smooth",
-  //       });
-  //     }
-  //   }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setAboutSection(document.getElementById("sobre"));
+    }
+  }, []);
 
-  //   scroll();
-  // }
+  function scroll() {
+    if (aboutSection) {
+      window.scrollTo({
+        top: aboutSection.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  }
 
   return (
     <div className="hero">
@@ -34,7 +37,7 @@ export function Hero() {
         </p>
 
         <button
-          // onClick={scroll}
+          onClick={scroll}
           className="btn btn-full gradient gradient-yellow gradient-hover radius transition"
         >
           Conheça a SolarTech
