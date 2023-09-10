@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,6 +7,17 @@ import Link from "next/link";
 import appLogo from "@/assets/images/icons/sol.png";
 
 export function Hero() {
+  const aboutSection = document.getElementById("sobre");
+
+  function scroll() {
+    if (aboutSection) {
+      window.scrollTo({
+        top: aboutSection.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  }
+
   return (
     <div className="hero">
       <div className="hero-description">
@@ -16,12 +29,12 @@ export function Hero() {
           xícara de café quente!
         </p>
 
-        <Link
-          href="/app"
+        <button
+          onClick={scroll}
           className="btn btn-full gradient gradient-yellow gradient-hover radius transition"
         >
-          Acessar
-        </Link>
+          Conheça a SolarTech
+        </button>
       </div>
 
       <div className="animated-sun">
