@@ -1,0 +1,151 @@
+.team {
+  background-size: cover;
+  background-position: center;
+}
+
+.team-seo-content {
+  display: flex;
+  gap: 30px;
+  height: calc(100vh - 10px);
+}
+
+.team-seo-content aside {
+  flex-basis: 50%;
+}
+
+.team-seo-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: var(--shadow);
+}
+
+.team-seo-details {
+  color: var(--default);
+}
+
+.team-seo-details h2 {
+  text-align: center;
+  font-size: var(--font-max);
+}
+
+.team-seo-details p {
+  text-align: justify;
+  padding-right: 40px;
+}
+
+.team-seo-details span {
+  display: inline-block;
+  margin: 30px 0;
+  font-family: "Dancing Script", cursive;
+  font-size: var(--font-max);
+}
+
+.team-content {
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.team-content article {
+  color: var(--default);
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+
+.team-avatar {
+  width: 160px;
+  height: 160px;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-round);
+  overflow: hidden;
+  transform: scale(1.1);
+  text-align: center;
+}
+
+.team-avatar:hover img {
+  transform: scale(1.2);
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-round);
+  transition: all 0.5s ease;
+}
+
+.team-details {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 992px) {
+  .team {
+    background-image: none;
+    padding: 0 20px;
+    padding-bottom: 20px;
+  }
+
+  .team-seo-content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .team-content {
+    gap: 20px;
+  }
+
+  .team-content article {
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: var(--radius-medium);
+    background: var(--header);
+    color: var(--default);
+    box-shadow: var(--shadow);
+    text-align: left;
+  }
+
+  .team-details {
+    margin-top: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    .team-content article {
+      justify-content: space-between;
+      text-align: right;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .team-avatar {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .team-avatar {
+      width: 100px;
+      height: 100px;
+    }
+
+    .team-details h2 {
+      font-size: 18px;
+    }
+
+    .team-details p {
+      font-size: 14px;
+    }
+  }
+}

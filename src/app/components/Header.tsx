@@ -10,6 +10,14 @@ import appLogo from "@/assets/images/icons/logo.png";
 export function Header() {
   const [btnMenuActive, setBtnMenuActive] = useState(false);
 
+  const links = [
+    { href: "/", text: "Home" },
+    { href: "/sobre", text: "Sobre" },
+    { href: "/blog", text: "Blog" },
+    { href: "/planos", text: "Planos" },
+    { href: "/app", text: "Acessar" },
+  ];
+
   return (
     <header>
       <div className="container">
@@ -37,18 +45,11 @@ export function Header() {
                   </span>
                 </div>
               </div>
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/sobre">Sobre</Link>
-              </li>
-              <li>
-                <Link href="/contato">Contato</Link>
-              </li>
-              <li>
-                <Link href="/app">Acessar</Link>
-              </li>
+              {links.map((anchor, index) => (
+                <li key={index}>
+                  <Link href={anchor.href}>{anchor.text}</Link>
+                </li>
+              ))}
             </ul>
           </nav>
 

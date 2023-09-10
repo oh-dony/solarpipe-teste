@@ -134,7 +134,7 @@ textarea {
 
 /* ==== SECTION ==== */
 section {
-  min-height: calc(var(--min-height - 60px));
+  /* min-height: calc(100vh - 55px); */
   padding: 60px 0;
 }
 

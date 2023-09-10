@@ -7,7 +7,7 @@ export function About() {
       <div className="about">
         <div className="container content">
           <div className="section-header">
-            <h2>Sobre</h2>
+            <h2>Conheça a SolarTech</h2>
             <p>
               Solução completa de Energia Solar Residencial, Empresarial e
               Industrial, para todo o Brasil. Fuja dos reajustes e comece a
