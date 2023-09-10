@@ -19,7 +19,7 @@ export function Header() {
     { href: "/blog", text: "Blog" },
     { href: "/planos", text: "Planos" },
     {
-      href: "/app",
+      href: "/aplicacao",
       text: "Acessar",
       className:
         "access-btn btn gradient gradient-red gradient-hover radius transition",
