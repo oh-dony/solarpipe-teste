@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 // Images
 import appLogo from "@/assets/images/icons/logo.png";
+
+// Components
+import DarkModeSwitch from "./DarkModeSwitch";
 
 export function Header() {
   const [btnMenuActive, setBtnMenuActive] = useState(false);
@@ -15,7 +18,12 @@ export function Header() {
     { href: "/sobre", text: "Sobre" },
     { href: "/blog", text: "Blog" },
     { href: "/planos", text: "Planos" },
-    { href: "/app", text: "Acessar" },
+    {
+      href: "/app",
+      text: "Acessar",
+      className:
+        "access-btn btn gradient gradient-red gradient-hover radius transition",
+    },
   ];
 
   return (
@@ -45,16 +53,21 @@ export function Header() {
                   </span>
                 </div>
               </div>
-              {links.map((anchor, index) => (
+              {links.map((link, index) => (
                 <li key={index}>
-                  <Link href={anchor.href}>{anchor.text}</Link>
+                  <Link href={link.href} className={link.className}>
+                    {link.text}
+                  </Link>
                 </li>
               ))}
+              <li>
+                <DarkModeSwitch />
+              </li>
             </ul>
           </nav>
 
           <button
-            className={`btn-header-mobile btn gradient gradient-yellow gradient-hover radius transition ${
+            className={`btn-header-mobile btn gradient gradient-red gradient-hover radius transition ${
               btnMenuActive ? "active" : ""
             }`}
             onClick={() => {

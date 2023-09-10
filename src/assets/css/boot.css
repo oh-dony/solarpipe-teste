@@ -21,9 +21,7 @@ main {
   --body: rgb(241, 241, 241);
   --header: #fff;
   --contents: #fff;
-  --galassmorphism: rgba(255, 255, 255, 0.5);
-  --black-galassmorphism: rgba(0, 0, 0, 0.5);
-  --footer: rgb(226, 226, 226);
+  --footer: #fff;
   --min-height: 100vh;
 
   /* ==== SHADOWS & BORDERS ====  */
@@ -92,16 +90,19 @@ main {
   --index-menu: 3;
   --index-modal: 4;
 }
-/* 
-a {
-  text-decoration: none;
-  color: var(--default);
-  transition: 0.3s all ease-in;
-}
 
-a:hover {
-  color: var(--primary);
-} */
+.darkmode {
+  /* ==== CONTAINERS ====  */
+  --body: rgb(20, 20, 20);
+  --header: rgb(41, 41, 41);
+  --footer: rgb(41, 41, 41);
+
+  /* ==== COLORS ====  */
+  --default: #fff;
+
+  /* ==== SHADOWS & BORDERS ====  */
+  --soft-border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
 /* ==== INPUTS ==== */
 input,
@@ -149,7 +150,7 @@ section {
 
 .section-header h2 {
   font-size: var(--font-max);
-  color: var(--default);
+  color: var(--primary);
 }
 
 .section-header p {
@@ -176,7 +177,6 @@ section {
   justify-content: center;
   cursor: pointer;
   text-align: center;
-  text-decoration: none;
   border: none;
   font-size: var(--font-large);
   font-weight: 600;
@@ -187,7 +187,6 @@ section {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
   transition-duration: 0.3s;
   min-height: 40px;
 }

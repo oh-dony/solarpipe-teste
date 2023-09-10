@@ -32,7 +32,7 @@ export function Features() {
               <div className="article-category">
                 <a
                   href="#"
-                  className="gradient gradient-hover transition gradient-yellow"
+                  className="gradient gradient-hover transition gradient-red"
                 >
                   Artigo
                 </a>

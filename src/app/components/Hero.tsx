@@ -38,7 +38,7 @@ export function Hero() {
 
         <button
           onClick={scroll}
-          className="btn btn-full gradient gradient-yellow gradient-hover radius transition"
+          className="btn btn-full gradient gradient-red gradient-hover radius transition"
         >
           Conheça a SolarTech
         </button>
