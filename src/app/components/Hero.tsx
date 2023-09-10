@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 // Images
-import appLogo from "@/assets/images/icons/logo.png";
+import appLogo from "@/assets/images/icons/sol.png";
 
 export function Hero() {
   return (
@@ -15,12 +16,16 @@ export function Hero() {
           xícara de café quente!
         </p>
 
-        <a
-          href="http://"
+        <Link
+          href="/app"
           className="btn btn-full gradient gradient-yellow gradient-hover radius transition"
         >
           Acessar
-        </a>
+        </Link>
+      </div>
+
+      <div className="animated-sun">
+        <Image src={appLogo} alt="" />
       </div>
     </div>
   );

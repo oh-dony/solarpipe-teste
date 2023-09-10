@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import "@/assets/css/style.css";
 
 // Components
+import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <Header />
         {children}
         <Footer />
       </body>

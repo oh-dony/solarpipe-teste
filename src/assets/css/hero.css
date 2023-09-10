@@ -1,4 +1,5 @@
 .hero {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,6 +9,31 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 0 30px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(./../images/backgrounds/teste.png);
+  /* background-size: cover; */
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
 }
 
 .hero-description {
@@ -26,4 +52,76 @@
 
 .hero-description p {
   margin-bottom: 15px;
+}
+
+.animated-sun {
+  position: absolute;
+  top: 69px;
+  right: 40px;
+  width: 180px;
+  height: 180px;
+  text-align: right;
+  transition: all ease 0.5s;
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(100px);
+  }
+}
+
+.animated-sun img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-description h2 {
+    font-size: var(--font-medium);
+  }
+
+  .hero-description p {
+    font-size: var(--font-small);
+    text-align: justify;
+  }
+
+  .animated-sun {
+    right: 20px;
+  }
+
+  .animated-sun img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    animation: rotate 10s linear infinite;
+  }
+
+  @keyframes animate {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(80px);
+    }
+  }
 }
