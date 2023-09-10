@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 // Images
 import appLogo from "@/assets/images/icons/sol.png";

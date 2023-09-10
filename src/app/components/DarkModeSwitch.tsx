@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
@@ -54,29 +52,40 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function DarkModeSwitch() {
-  const darkModeStorage = localStorage.getItem("idmode");
-  const [darkMode, setDarkmode] = useState(
-    darkModeStorage ? darkModeStorage : false
-  );
+  const [darkModeStorage, setDarkModeStorage] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("darkmode");
+    if (typeof window !== "undefined") {
+      setDarkModeStorage(Boolean(localStorage.getItem("darkMode")));
     }
-  }, [darkMode]);
+  }, []);
 
-  function DarkMode() {
-    document.documentElement.classList.toggle("darkmode");
-    if (document.documentElement.classList.contains("darkmode")) {
-      setDarkmode(true);
-      localStorage.setItem("idmode", "true");
+  useEffect(() => {
+    if (darkModeStorage) {
       document.documentElement.classList.add("darkmode");
-      return;
+      setDarkMode(darkModeStorage);
+    } else {
+      document.documentElement.classList.remove("darkmode");
+      setDarkMode(darkModeStorage);
     }
+  }, [darkModeStorage]);
 
-    localStorage.removeItem("idmode");
-    setDarkmode(false);
-  }
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    setDarkModeStorage(newDarkMode);
+
+    if (typeof window !== "undefined") {
+      if (newDarkMode) {
+        localStorage.setItem("darkMode", "true");
+      } else {
+        localStorage.removeItem("darkMode");
+      }
+
+      document.documentElement.classList.toggle("darkmode", newDarkMode);
+    }
+  };
 
   return (
     <FormGroup>
@@ -84,13 +93,12 @@ export default function DarkModeSwitch() {
         control={
           <MaterialUISwitch
             sx={{ m: 1 }}
-            defaultChecked
-            checked={Boolean(darkMode)}
+            checked={darkMode}
             color="warning"
-            onClick={DarkMode}
+            onClick={toggleDarkMode}
           />
         }
-        label="DarkMode"
+        label="Dark Mode"
       />
     </FormGroup>
   );

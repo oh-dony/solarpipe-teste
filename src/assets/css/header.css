@@ -3,7 +3,7 @@ header {
   position: fixed;
   top: 0;
   background: var(--header);
-  /* box-shadow: var(--shadow); */
+  box-shadow: var(--shadow);
   padding: 10px 0;
   transition: all ease 0.5s;
   z-index: 10;
