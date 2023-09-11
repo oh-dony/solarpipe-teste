@@ -59,6 +59,10 @@
   height: 800px;
 }
 
+.app-helper {
+  padding: 40px;
+}
+
 @media screen and (max-width: 1200px) {
   .app-content {
     flex-direction: column;
@@ -78,5 +82,26 @@
     width: 100%;
     padding-right: 20px;
     height: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-helper {
+    padding: 10px 20px;
+  }
+
+  .app-helper p {
+    font-size: var(--font-small);
+    margin-bottom: 10px;
+  }
+
+  .app-helper h3 {
+    font-size: var(--font-small);
+    margin-bottom: 10px;
+  }
+
+  .app-helper small,
+  .app-helper ul li {
+    font-size: var(--font-min);
   }
 }

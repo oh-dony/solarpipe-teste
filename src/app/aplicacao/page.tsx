@@ -56,6 +56,19 @@ export default function App() {
           </p>
         </div>
 
+        <div className="app-helper">
+          <p>
+            Caso demore para aparecer os Building Insights, aguarde um pouco. 😊
+          </p>
+          <h3>Endereços que funcionam no Building Insights:</h3>
+          <small>As demais dão erro 404 na API 😢</small>
+          <ul>
+            <li>MASP</li>
+            <li>Americanas Maceió</li>
+            <li>Shopping Barra Sul</li>
+          </ul>
+        </div>
+
         <div className="app-content">
           <div className="addresses-content">
             <AddressesCard data={addresses} onEventEmit={changeAddressOnMap} />
