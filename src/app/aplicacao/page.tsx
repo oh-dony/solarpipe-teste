@@ -21,7 +21,6 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const addressesResponse = await GetAddresses();
-      console.log(addressesResponse);
 
       if (addressesResponse) {
         setAddresses(addressesResponse);
@@ -34,6 +33,7 @@ export default function App() {
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeAddressOnMap = (address: Address) => {
