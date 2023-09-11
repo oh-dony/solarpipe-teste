@@ -54,6 +54,7 @@ header {
   transition: all ease 0.5s;
 }
 
+.access-btn,
 .access-btn:hover {
   color: var(--white) !important;
 }
@@ -63,12 +64,11 @@ header {
 }
 
 .dark-mode-btn {
-  background-color: var(--color-blue);
   box-shadow: var(--shadow);
+  border: var(--soft-border);
   color: var(--white);
   font-size: var(--font-normal);
   font-weight: 600;
-  border: none;
   padding: 5px;
   border-radius: var(--radius-normal);
   height: 33px;
@@ -175,23 +175,14 @@ header {
   }
 
   .navbar li:nth-child(6) {
-    border: none;
-  }
-
-  .navbar li:nth-child(6) a {
-    padding: 10px;
+    width: 100%;
+    display: inline-block;
+    height: 45px;
+    text-align: left;
   }
 
   .access-btn {
     text-align: left !important;
-  }
-
-  .dark-mode-btn {
-    width: 100%;
-    display: inline-block;
-    padding: 10px;
-    height: 45px;
-    text-align: left;
   }
 }
 

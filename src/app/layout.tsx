@@ -9,7 +9,10 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: "Solar",
+  title: {
+    default: "SolarTech",
+    template: "%s | SolarTech",
+  },
   description:
     "Solução completa de Energia Solar Residencial, Empresarial e Industrial, para todo o Brasil. Fuja dos reajustes e comece a economizar na conta de energia!",
 };

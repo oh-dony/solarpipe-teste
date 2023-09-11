@@ -1,7 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
+import React, { useEffect, useState } from "react";
 
 // Google Maps API
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
@@ -40,28 +37,17 @@ export default function GoogleMapComponent({ coordinates, marker }: Props) {
     setMap(map);
   };
 
-  const fetchData = async () => {
-    try {
-      if (isLoaded && map) {
-        const bounds = new window.google.maps.LatLngBounds(coordinates);
-        map.fitBounds(bounds);
-        setSolarIntensityData(null);
-      }
+  const time = 2000;
 
-      const buildingInsights = await GetBuildingInsights(coordinates);
-      setSolarIntensityData(buildingInsights);
-    } catch (error) {
-      toast.error("Erro ao buscar os Insights 😢", {
-        position: "top-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+  const fetchData = async () => {
+    if (isLoaded && map) {
+      const bounds = new window.google.maps.LatLngBounds(coordinates);
+      map.fitBounds(bounds);
+      setSolarIntensityData(null);
     }
+
+    const buildingInsights = await GetBuildingInsights(coordinates);
+    setSolarIntensityData(buildingInsights);
   };
 
   useEffect(() => {
@@ -70,22 +56,18 @@ export default function GoogleMapComponent({ coordinates, marker }: Props) {
   }, [isLoaded, map, coordinates]);
 
   return isLoaded ? (
-    <>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={coordinates}
-        zoom={8}
-        onLoad={onLoad}
-        options={{
-          mapTypeId: "satellite",
-        }}
-      >
-        <Marker position={coordinates} label={marker} />
-        {renderSolarIntensityOverlay(solarIntensityData, coordinates)}
-      </GoogleMap>
-
-      <ToastContainer />
-    </>
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={coordinates}
+      zoom={8}
+      onLoad={onLoad}
+      options={{
+        mapTypeId: "satellite",
+      }}
+    >
+      <Marker position={coordinates} label={marker} />
+      {renderSolarIntensityOverlay(solarIntensityData, coordinates)}
+    </GoogleMap>
   ) : (
     <></>
   );

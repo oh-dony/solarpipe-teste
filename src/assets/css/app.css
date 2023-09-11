@@ -19,7 +19,7 @@
 }
 
 .addresses-content::-webkit-scrollbar-thumb {
-  background-color: var(--header);
+  background-color: var(--thumb);
   border-radius: 6px;
 }
 
@@ -55,16 +55,17 @@
 }
 
 .google-map-content {
+  width: 80%;
   height: 800px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .app-content {
     flex-direction: column;
   }
 
   .addresses-content {
-    width: 90%;
+    width: 100%;
     max-height: 450px;
     padding-right: 10px;
   }
@@ -74,6 +75,7 @@
   }
 
   .google-map-content {
+    width: 100%;
     padding-right: 20px;
     height: 400px;
   }
