@@ -39,7 +39,7 @@ export const noticiasEnergiaSolar = [
     titulo: "Novas células solares revolucionárias são anunciadas",
     descricao:
       "Uma empresa de tecnologia anunciou o desenvolvimento de células solares revolucionárias que podem gerar energia mesmo em condições de baixa luminosidade, abrindo novas possibilidades para a energia solar em locais com climas variados.",
-    capa: "https://source.unsplash.com/1000x1000/?solar,technology",
+    capa: "https://source.unsplash.com/1000x1000/?solar",
   },
 ];
 
