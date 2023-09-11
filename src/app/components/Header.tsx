@@ -32,7 +32,7 @@ export function Header() {
           <div className="logo">
             <Image
               src={appLogo}
-              alt="Logo do sol alimentando a energia de um painel solar"
+              alt="Logo do sol alimentando a energia de um painel solar."
             />
             <span>
               Solar<b>Tech</b>
