@@ -18,7 +18,7 @@ export const noticiasEnergiaSolar = [
     titulo: "Baterias solares de última geração",
     descricao:
       "Pesquisadores apresentam baterias solares de próxima geração que podem armazenar energia solar por períodos mais longos, tornando a energia solar uma opção mais confiável em todo o mundo.",
-    capa: "https://source.unsplash.com/1000x1000/?solar,tech",
+    capa: "https://source.unsplash.com/1000x1000/?solar,battery",
   },
   {
     tipo: "Sustentabilidade",

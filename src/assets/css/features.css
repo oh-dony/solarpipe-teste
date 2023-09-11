@@ -83,9 +83,6 @@ article .article-cover img {
   font-size: var(--font-min);
 }
 
-@media screen and (max-width: 1280px) {
-}
-
 @media screen and (max-width: 992px) {
   .articles-content article {
     flex-basis: calc(50% - 5px);
