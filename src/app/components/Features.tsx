@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 // Helpers
-import { noticiasEnergiaSolar } from "@/app/helpers/herlper";
+import { noticiasEnergiaSolar } from "@/app/helpers/mockArrays";
 
 export function Features() {
   const noticias = noticiasEnergiaSolar;

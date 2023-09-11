@@ -1,5 +1,5 @@
 // Helpers
-import { beneficiosEnergiaSolar } from "@/app/helpers/herlper";
+import { beneficiosEnergiaSolar } from "@/app/helpers/mockArrays";
 
 export function About() {
   return (

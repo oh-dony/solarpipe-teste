@@ -8,10 +8,11 @@ import { Address } from "@/dtos/address";
 // Components
 import GoogleMapComponent from "../components/GoogleMapComponent";
 import { AddressesCard } from "../components/AddressesCard";
+import { GetAddresses } from "@/api/GetAddresses";
 
 export default function App() {
-  const [data, setData] = useState([] as Address[]);
-  const [marker, setMarker] = useState<string | null>("Label");
+  const [addresses, setAddresses] = useState([] as Address[]);
+  const [marker, setMarker] = useState<string | null>(null);
   const [center, setCenter] = useState({
     lat: 37.445,
     lng: -122.139,
@@ -19,36 +20,18 @@ export default function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://challenge.solarpipe.com.br/addresses",
-          {
-            next: {
-              revalidate: 30,
-            },
-            cache: "no-store",
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Erro ao buscar os endereços.");
-        }
-
-        const addresses = await response.json();
-        setData(addresses);
-      } catch (error) {
-        console.error("Ocorreu um erro ao buscar os endereços:", error);
-      }
+      const addressesResponse = await GetAddresses();
+      setAddresses(addressesResponse);
     };
 
     fetchData();
   }, []);
 
-  const addressEmit = (data: any) => {
-    setMarker(data.description);
+  const changeAddressOnMap = (address: Address) => {
+    setMarker(address.description);
     setCenter({
-      lat: parseFloat(data.latitude),
-      lng: parseFloat(data.longitude),
+      lat: parseFloat(address.latitude),
+      lng: parseFloat(address.longitude),
     });
   };
 
@@ -66,10 +49,10 @@ export default function App() {
 
         <div className="app-content">
           <div className="addresses-content">
-            <AddressesCard data={data} onEventEmit={addressEmit} />
+            <AddressesCard data={addresses} onEventEmit={changeAddressOnMap} />
           </div>
 
-          <GoogleMapComponent center={center} marker={marker} />
+          <GoogleMapComponent coordinates={center} marker={marker} />
         </div>
       </div>
     </section>

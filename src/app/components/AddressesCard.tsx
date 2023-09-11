@@ -3,58 +3,64 @@ import { useState, useEffect } from "react";
 // Dtos
 import { Address } from "@/dtos/address";
 
-export function AddressesCard(props: any) {
-  const [address, setData] = useState([] as Address[]);
+interface AddressesCardProps {
+  data: Address[];
+  onEventEmit: (address: Address) => void;
+}
+
+export function AddressesCard({ data, onEventEmit }: AddressesCardProps) {
+  const [addresses, setAddresses] = useState([] as Address[]);
 
   useEffect(() => {
-    setData(props.data);
-  }, [props]);
+    setAddresses(data);
+  }, [data]);
 
-  const handleClick = (index: number) => {
-    const updatedData = [...address];
-    updatedData.forEach((address, i) => {
-      address.active = i === index;
+  const handleAddressClick = (index: number) => {
+    const updatedAddresses = addresses.map((addr, i) => {
+      const isActive = i === index;
 
-      if (address.active) {
+      if (isActive) {
         const addressEmit = {
-          description: address.description,
-          latitude: address.latitude,
-          longitude: address.longitude,
+          description: addr.description,
+          latitude: addr.latitude,
+          longitude: addr.longitude,
         };
 
-        props.onEventEmit(addressEmit);
+        onEventEmit(addressEmit);
       }
+
+      return { ...addr, active: isActive };
     });
 
-    setData(updatedData);
+    setAddresses(updatedAddresses);
   };
 
-  function addressBody(address: any) {
-    const addressBody = [
-      address.streetName,
-      address.neighbourhood,
-      address.streetNumber,
-      address.city,
-      address.state,
-      address.zipcode,
+  const formatAddress = (addr: Address) => {
+    const addressParts = [
+      addr.streetName,
+      addr.neighbourhood,
+      addr.streetNumber,
+      addr.city,
+      addr.state,
+      addr.zipcode,
     ];
 
-    return addressBody.join(", ");
-  }
+    return addressParts.join(", ");
+  };
 
   return (
     <>
-      {address.map((address: Address, index: number) => (
+      {addresses.map((addr, index) => (
         <div
-          className={`addresses-card ${address.active ? "active" : ""}`}
+          className={`addresses-card ${addr.active ? "active" : ""}`}
           key={index}
-          onClick={() => handleClick(index)}
+          onClick={() => handleAddressClick(index)}
         >
           <div className="addresses-card-header">
-            <h2>{address.description}</h2>
+            <h2>{addr.description}</h2>
           </div>
 
-          <div className="addresses-card-body">{addressBody(address)}</div>
+          <div className="addresses-card-body">{formatAddress(addr)}</div>
         </div>
       ))}
     </>
