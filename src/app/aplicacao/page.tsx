@@ -14,14 +14,23 @@ export default function App() {
   const [addresses, setAddresses] = useState([] as Address[]);
   const [marker, setMarker] = useState<string | null>(null);
   const [center, setCenter] = useState({
-    lat: 37.445,
-    lng: -122.139,
+    lat: -22.2265335,
+    lng: -54.7937397,
   });
 
   useEffect(() => {
     const fetchData = async () => {
       const addressesResponse = await GetAddresses();
-      setAddresses(addressesResponse);
+      console.log(addressesResponse);
+
+      if (addressesResponse) {
+        setAddresses(addressesResponse);
+        setMarker(addresses[0].description);
+        setCenter({
+          lat: parseFloat(addresses[0].latitude),
+          lng: parseFloat(addresses[0].longitude),
+        });
+      }
     };
 
     fetchData();
@@ -39,11 +48,11 @@ export default function App() {
     <section className="app">
       <div className="container content">
         <div className="section-header">
-          <h2>Artigos</h2>
+          <h2>Mapa solar</h2>
           <p>
-            Fique por dentro das últimas novidades no mundo da energia solar e
-            descubra como a energia do sol está transformando o nosso futuro
-            sustentável.
+            Utilize nosso aplicativo e descubra a intensidade solar da sua casa,
+            obtendo insights valiosos para aproveitar ao máximo a energia solar
+            em sua residência!
           </p>
         </div>
 
@@ -52,7 +61,9 @@ export default function App() {
             <AddressesCard data={addresses} onEventEmit={changeAddressOnMap} />
           </div>
 
-          <GoogleMapComponent coordinates={center} marker={marker} />
+          <div className="google-map-content">
+            <GoogleMapComponent coordinates={center} marker={marker} />
+          </div>
         </div>
       </div>
     </section>

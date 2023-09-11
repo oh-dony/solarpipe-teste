@@ -17,10 +17,9 @@ export function Header() {
     { href: "/", text: "Home" },
     { href: "/sobre", text: "Sobre" },
     { href: "/blog", text: "Blog" },
-    { href: "/planos", text: "Planos" },
     {
       href: "/aplicacao",
-      text: "Acessar",
+      text: "Mapa Solar",
       className:
         "access-btn btn gradient gradient-red gradient-hover radius transition",
     },

@@ -1,4 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 // Google Maps API
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
@@ -10,61 +13,79 @@ import { GetBuildingInsights } from "@/api/GetBuildingInsights";
 // Style Container Google
 const containerStyle = {
   width: "100%",
-  height: "800px",
+  height: "100%",
 };
 
-export default function GoogleMapComponent(props: {
-  coordinates: { lat: any; lng: any };
+interface Props {
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
   marker: any;
-}) {
+}
+
+export default function GoogleMapComponent({ coordinates, marker }: Props) {
   const [map, setMap] = useState<google.maps.Map | null>(null);
-  const [solarIntensityData, setSolarIntensityData] = useState(null);
+  const [solarIntensityData, setSolarIntensityData] = useState<any | null>(
+    null
+  );
 
-  const apiSecret = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY;
-  const center = useMemo(() => {
-    return {
-      lat: props.coordinates.lat,
-      lng: props.coordinates.lng,
-    };
-  }, [props.coordinates.lat, props.coordinates.lng]);
-
+  const apiSecret = process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY || "secret";
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: apiSecret || "secret",
+    googleMapsApiKey: apiSecret,
   });
 
   const onLoad = (map: google.maps.Map) => {
     setMap(map);
   };
 
-  useEffect(() => {
-    if (isLoaded && map) {
-      const bounds = new window.google.maps.LatLngBounds(center);
-      map.fitBounds(bounds);
-      setSolarIntensityData(null);
+  const fetchData = async () => {
+    try {
+      if (isLoaded && map) {
+        const bounds = new window.google.maps.LatLngBounds(coordinates);
+        map.fitBounds(bounds);
+        setSolarIntensityData(null);
+      }
+
+      const buildingInsights = await GetBuildingInsights(coordinates);
+      setSolarIntensityData(buildingInsights);
+    } catch (error) {
+      toast.error("Erro ao buscar os Insights 😢", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
+  };
 
-    const fetchData = async () => {
-      const buildingInsights = await GetBuildingInsights(center);
-      setSolarIntensityData(await buildingInsights);
-    };
-
+  useEffect(() => {
     fetchData();
-  }, [isLoaded, map, center.lat, center.lng, center]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoaded, map, coordinates]);
 
   return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={8}
-      onLoad={onLoad}
-      options={{
-        mapTypeId: "satellite",
-      }}
-    >
-      <Marker position={center} label={props.marker} />
-      {renderSolarIntensityOverlay(solarIntensityData, center)}
-    </GoogleMap>
+    <>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={coordinates}
+        zoom={8}
+        onLoad={onLoad}
+        options={{
+          mapTypeId: "satellite",
+        }}
+      >
+        <Marker position={coordinates} label={marker} />
+        {renderSolarIntensityOverlay(solarIntensityData, coordinates)}
+      </GoogleMap>
+
+      <ToastContainer />
+    </>
   ) : (
     <></>
   );
